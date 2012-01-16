@@ -30,3 +30,15 @@
              (varchar :email 255))))
   ;; Code to be executed when migrating schema "down" using "rollback"
   (down [] (drop (table :users ))))
+
+(defmigration add-posts-table
+  (up [] (create clogdb
+           (table :posts (integer :id :primary-key )
+             (varchar :title 250)
+             (text :content )
+             (boolean :status (default false))
+             (timestamp :created (default (now)))
+             (timestamp :published )
+             (integer :user [:refer :users :id] :not-null))))
+  (down [] (drop (table :posts ))))
+
