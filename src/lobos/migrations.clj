@@ -21,4 +21,12 @@
    :user "clog"
    :password "clog"})
 
-
+(defmigration add-users-table
+  ;; code be executed when migrating the schema "up" using "migrate"
+  (up [] (create clogdb
+           (table :users (integer :id :primary-key )
+             (varchar :username 100 :unique )
+             (varchar :password 100 :not-null )
+             (varchar :email 255))))
+  ;; Code to be executed when migrating schema "down" using "rollback"
+  (down [] (drop (table :users ))))
