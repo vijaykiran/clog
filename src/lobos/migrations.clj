@@ -17,7 +17,7 @@
 (def clogdb
   {:classname "org.postgresql.Driver"
    :subprotocol "postgresql"
-   :subname "clogdb"
+   :subname "//localhost:5555/clog"
    :user "clog"
    :password "clog"})
 
@@ -41,4 +41,3 @@
              (timestamp :published )
              (integer :user [:refer :users :id] :not-null))))
   (down [] (drop (table :posts ))))
-
