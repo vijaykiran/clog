@@ -12,7 +12,7 @@
 (defdb clogdb
   {:classname "org.postgresql.Driver"
    :subprotocol "postgresql"
-   :subname "clogdb"
+   :subname "//localhost:5555/clogdb"
    :user "clog"
    :password "clog"})
 
