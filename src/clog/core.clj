@@ -1,6 +1,7 @@
 (ns clog.core
   (:use ring.adapter.jetty
         ring.middleware.resource
+        ring.middleware.reload
         ring.util.response
         net.cgrand.moustache))
 
@@ -12,6 +13,7 @@
 ;; Routes definition
 (def routes
   (app
+    (wrap-reload)
     [""] index))
 
 ;;; start function for starting jetty
