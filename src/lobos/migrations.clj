@@ -21,15 +21,15 @@
    :user "clog"
    :password "clog"})
 
-(defmigration add-users-table
+(defmigration add-authors-table
   ;; code be executed when migrating the schema "up" using "migrate"
   (up [] (create clogdb
-           (table :users (integer :id :primary-key )
+           (table :authors (integer :id :primary-key )
              (varchar :username 100 :unique )
              (varchar :password 100 :not-null )
              (varchar :email 255))))
   ;; Code to be executed when migrating schema "down" using "rollback"
-  (down [] (drop (table :users ))))
+  (down [] (drop (table :authors ))))
 
 (defmigration add-posts-table
   (up [] (create clogdb
@@ -39,5 +39,6 @@
              (boolean :status (default false))
              (timestamp :created (default (now)))
              (timestamp :published )
-             (integer :user [:refer :users :id] :not-null))))
+             (integer :author [:refer :authors :id] :not-null))))
   (down [] (drop (table :posts ))))
+

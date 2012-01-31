@@ -1,7 +1,7 @@
 (comment "Entity definitions for Clog using Korma.
           To get the list of users from the database run the following code in REPL:
           (use 'korma.db 'korma.core 'clog.models)
-          (select users)
+          (select authors)
           ")
 
 (ns clog.models
@@ -12,9 +12,9 @@
 (defdb clogdb
   {:classname "org.postgresql.Driver"
    :subprotocol "postgresql"
-   :subname "//localhost:5555/clogdb"
+   :subname "//localhost:5555/clog"
    :user "clog"
    :password "clog"})
 
-(defentity users)
+(defentity authors)
 (defentity posts)

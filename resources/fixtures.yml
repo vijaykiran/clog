@@ -1,0 +1,21 @@
+authors:
+    - id: 1
+      username:     "john"
+      password:     "clojure-blogger"
+      email:        "john@clojure-blog.org"
+    - id: 2
+      username:     "jane"
+      password:     "clojure-blogher"
+      email:        "jane@clojure-blog.org"
+
+posts:
+    - id: 1
+      title: "Hello World!"
+      content: "<i>Welcome to Clog, the World's most advanced Clojure Blog Engine!</i>"
+      status: true
+      author: 1
+    - id: 2
+      title: "Hello World!, again!"
+      content: "Sayin 't 'gain! <i>Welcome to Clog, the World's most advanced Clojure Blog Engine!</i>"
+      status: true
+      author: 2
