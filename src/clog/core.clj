@@ -3,18 +3,13 @@
         ring.middleware.resource
         ring.middleware.reload
         ring.util.response
-        net.cgrand.moustache))
-
-;;; A simple handler to show send some response to the client.
-(defn index
-  [req]
-  (response "Welcome, to Clog - A Blog Engine written in Clojure"))
+        net.cgrand.moustache
+        clog.controller))
 
 ;; Routes definition
 (def routes
   (app
-    (wrap-reload)
-    [""] index))
+    [""] (delegate index)))
 
 ;;; start function for starting jetty
 (defn start [port]
