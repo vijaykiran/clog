@@ -4,5 +4,5 @@
 (deftemplate home-page  "home.html" [posts]
   [:title] (content "Clog - the clojure blog engine!")
   [:div.post] (clone-for [post posts]
-                [:div.title] (content (:title post))
-                [:div.content (content (:content post))]))
+                [:span.title] (content (:title post))
+                [:div.content (html-content (:content post))]))

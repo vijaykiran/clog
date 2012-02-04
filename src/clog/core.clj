@@ -3,12 +3,14 @@
         ring.middleware.resource
         ring.middleware.reload
         ring.util.response
+        ring.middleware.file
         net.cgrand.moustache
         clog.controller))
 
 ;; Routes definition
 (def routes
   (app
+   (wrap-file "resources")
     [""] (delegate index)))
 
 ;;; start function for starting jetty
