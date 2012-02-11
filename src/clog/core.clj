@@ -10,7 +10,7 @@
 ;; Routes definition
 (def routes
   (app
-   (wrap-file "resources")
+   (wrap-file "resources/public")
     [""] (delegate index)))
 
 ;;; start function for starting jetty
