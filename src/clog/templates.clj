@@ -6,3 +6,8 @@
   [:div.post] (clone-for [post posts]
                 [:span.title] (content (:title post))
                 [:div.content (html-content (:content post))]))
+
+(deftemplate post-page "post.html" [post]
+  [:title] (content (str "Clog - " (:title post)))
+  [:span.title] (content (:title post))
+  [:div.content] (html-content (:content post)))

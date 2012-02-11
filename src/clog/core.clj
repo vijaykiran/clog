@@ -11,7 +11,8 @@
 (def routes
   (app
    (wrap-file "resources/public")
-    [""] (delegate index)))
+    [""] (delegate index)
+    [id] (delegate post id)))
 
 ;;; start function for starting jetty
 (defn start [port]
