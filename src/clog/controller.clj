@@ -7,7 +7,6 @@
 (defn index
   "Index page handler"
   [req]
-  (println req)
   (->> (select posts) home-page response))
 
 (defn post
@@ -39,4 +38,4 @@
   (let [username (:username (:session req))]
     (if (nil? username)
       (redirect "/login")
-      (response "Admin Page"))))
+      (response (admin-page)))))

@@ -20,3 +20,5 @@
                   (do->
                     (remove-attr :style)
                     (content msg))))
+
+(deftemplate admin-page "admin.html" [])
