@@ -1,12 +1,13 @@
 (ns clog.controller
-  (:use  clog.templates
-         clog.models
-         ring.util.response
-         korma.core))
+  (:use clog.templates
+        clog.models
+        ring.util.response
+        korma.core))
 
 (defn index
   "Index page handler"
   [req]
+  (println req)
   (->> (select posts) home-page response))
 
 (defn post
@@ -14,7 +15,7 @@
   [req id]
   (let [postId (Integer/parseInt id)]
     (->> (first (select posts (where {:id postId})))
-      post-page response)))
+         post-page response)))
 
 
 (defn login
@@ -24,6 +25,18 @@
     (if (empty? params)
       (response (login-page))
       (if (= (get params "username") (get params "password"))
-        (redirect "/admin")
+        (assoc (redirect "/admin") :session {:username (get params "username")})
         (response (login-page "Invalid username or password"))))))
 
+(defn logout
+  "Logout handler"
+  [req]
+  (assoc (redirect "/") :session nil))
+
+(defn admin
+  "Admin handler"
+  [req]
+  (let [username (:username (:session req))]
+    (if (nil? username)
+      (redirect "/login")
+      (response "Admin Page"))))

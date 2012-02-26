@@ -5,17 +5,23 @@
         ring.util.response
         ring.middleware.file
         ring.middleware.params
+        ring.middleware.session
+        ring.middleware.session.cookie
         net.cgrand.moustache
         clog.controller))
+
 
 ;; Routes definition
 (def routes
   (app
-   (wrap-params)
    (wrap-file "resources/public")
-    ["login"]  (delegate login)
-    [""] (delegate index)
-    [id] (delegate post id)))
+   (wrap-params)
+   (wrap-session {:cookie-name "clog-session" :store (cookie-store)})
+   ["login"] (delegate login)
+   ["logout"] (delegate logout)
+   ["admin"] (delegate admin)
+   [""] (delegate index)
+   [id] (delegate post id)))
 
 
 ;;; start function for starting jetty
