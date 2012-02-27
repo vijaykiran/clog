@@ -35,7 +35,15 @@
 (defn admin
   "Admin handler"
   [req]
-  (let [username (:username (:session req))]
+  (let [username (:username (:session req))
+        params (:params req)]
     (if (nil? username)
       (redirect "/login")
-      (response (admin-page)))))
+      (do
+        (if-not (empty? params)
+          (let [id (inc (count (select posts)))
+                author-id (:id (first (select authors (fields :id) (where {:username username}))))]
+            (insert posts (values (assoc params
+                                    :id id
+                                    :author author-id)))))
+        (response (admin-page))))))
