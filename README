@@ -1,6 +1,8 @@
 # clog
 
-A blog engine example written in Clojure.
+A blog engine example written in Clojure - built as a part of the Clojure web development blog series. 
+
+See http://www.vijaykiran.com/2012/01/11/web-application-development-with-clojure-part-1/  for more info
 
 
 ## License
