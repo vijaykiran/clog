@@ -2,7 +2,6 @@
   (:use ring.adapter.jetty
         ring.middleware.resource
         ring.middleware.reload
-        ring.util.response
         ring.middleware.file
         ring.middleware.params
         ring.middleware.session
